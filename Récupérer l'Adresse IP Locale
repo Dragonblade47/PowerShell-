@@ -1,0 +1,3 @@
+# Afficher l'adresse IP locale
+Get-NetIPAddress | Where-Object {$_.AddressFamily -eq "IPv4" -and $_.InterfaceAlias -ne "Loopback Pseudo-Interface"} |
+Select-Object -Property InterfaceAlias, IPAddress
