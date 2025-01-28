@@ -1,0 +1,12 @@
+# Nettoyage des fichiers temporaires
+$TempFolders = @(
+    "$env:temp",
+    "C:\Windows\Temp"
+)
+
+foreach ($folder in $TempFolders) {
+    Write-Host "Nettoyage de $folder..."
+    Get-ChildItem -Path $folder -Recurse -Force | Remove-Item -Force -Recurse -ErrorAction SilentlyContinue
+}
+
+Write-Host "Nettoyage terminé !" -ForegroundColor Green
